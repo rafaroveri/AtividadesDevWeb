@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Página Acessível — Exemplo</title>
+
+    <!-- Sem CSS inline: estilos devem ficar em arquivo externo -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Página Acessível</h1>
+      <p>Exemplo com boas práticas estruturais de acessibilidade.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="titulo-conteudo">
+        <h2 id="titulo-conteudo">Conteúdo</h2>
+
+        <figure>
+          <img
+            src="biblioteca.jpg"
+            alt="Corredor de uma biblioteca com estantes de livros dos dois lados"
+          />
+          <figcaption>Ambiente de estudo com livros e corredores amplos.</figcaption>
+        </figure>
+
+        <h3>Formulário de contato</h3>
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Envie sua mensagem</legend>
+
+            <p>
+              <label for="nome">Nome</label>
+              <input id="nome" name="nome" type="text" autocomplete="name" required />
+            </p>
+
+            <p>
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </p>
+
+            <p>
+              <label for="assunto">Assunto</label>
+              <select id="assunto" name="assunto">
+                <option value="duvida">Dúvida</option>
+                <option value="sugestao">Sugestão</option>
+                <option value="feedback">Feedback</option>
+              </select>
+            </p>
+
+            <p>
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+            </p>
+
+            <button type="submit">Enviar</button>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>Contato: acessibilidade@exemplo.com</p>
+    </footer>
+  </body>
+</html>

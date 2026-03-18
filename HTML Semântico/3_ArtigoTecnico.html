@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Artigo: A Importância da Semântica no HTML</title>
+  </head>
+  <body>
+    <header>
+      <h1>A Importância da Semântica no HTML</h1>
+      <p>
+        <strong>Autor:</strong> Rafael Roveri —
+        <em>Curso de Desenvolvimento Web</em>
+      </p>
+    </header>
+
+    <main>
+      <section aria-labelledby="resumo">
+        <h2 id="resumo">Resumo</h2>
+        <p>
+          Este artigo discute como o uso de tags semânticas melhora
+          <strong>acessibilidade</strong>, <strong>SEO</strong> e
+          <em>manutenibilidade</em> do código.
+        </p>
+      </section>
+
+      <section aria-labelledby="introducao">
+        <h2 id="introducao">Introdução</h2>
+        <p>
+          HTML não é apenas “marcação visual”: ele descreve a
+          <em>estrutura</em> e o <em>significado</em> do conteúdo.
+        </p>
+        <p>
+          Quando usamos elementos como <strong>&lt;article&gt;</strong> e
+          <strong>&lt;nav&gt;</strong>, ajudamos navegadores, leitores de tela e
+          mecanismos de busca a entenderem a página.
+        </p>
+      </section>
+
+      <section aria-labelledby="desenvolvimento">
+        <h2 id="desenvolvimento">Desenvolvimento</h2>
+
+        <h3>Semântica e organização</h3>
+        <p>
+          Elementos semânticos deixam claro o papel de cada bloco: cabeçalho,
+          navegação, conteúdo principal e conteúdos tangenciais.
+        </p>
+
+        <h3>Acessibilidade</h3>
+        <p>
+          Com semântica, tecnologias assistivas conseguem identificar o conteúdo
+          com mais precisão, tornando a leitura mais fluida.
+        </p>
+
+        <h3>Boas práticas</h3>
+        <ul>
+          <li>Manter hierarquia de headings (h1 → h2 → h3...).</li>
+          <li>Evitar usar <em>&lt;br&gt;</em> para espaçamento.</li>
+          <li>Usar <strong>&lt;strong&gt;</strong> e <strong>&lt;em&gt;</strong> com significado.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="conclusao">
+        <h2 id="conclusao">Conclusão</h2>
+        <p>
+          O HTML semântico torna o projeto mais robusto, acessível e sustentável
+          ao longo do tempo.
+        </p>
+      </section>
+    </main>
+
+    <aside aria-labelledby="leituras">
+      <h2 id="leituras">Referências e leitura complementar</h2>
+      <ul>
+        <li><cite>MDN Web Docs — HTML Semântico</cite></li>
+        <li><cite>WAI-ARIA Authoring Practices</cite></li>
+      </ul>
+    </aside>
+
+    <footer>
+      <p>
+        Publicado em <time datetime="2026-02-14">14/02/2026</time> — Revista
+        Acadêmica (versão simplificada).
+      </p>
+    </footer>
+  </body>
+</html>

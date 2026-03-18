@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Editorial — Layout</title>
+  </head>
+  <body>
+    <header>
+      <h1>Revista Editorial</h1>
+    </header>
+
+    <main>
+      <article aria-labelledby="a1">
+        <header>
+          <h2 id="a1">Como organizar um layout semântico</h2>
+        </header>
+
+        <p>O conteúdo principal deve estar dentro do main e ser dividido de forma coerente.</p>
+
+        <aside aria-labelledby="curiosidade">
+          <h3 id="curiosidade">Curiosidade</h3>
+          <p>
+            Um <strong>aside interno</strong> é tangencial ao artigo, mas ainda é relevante
+            para o tema daquele conteúdo específico.
+          </p>
+        </aside>
+
+        <p>Use section para agrupar tópicos e article para conteúdo independente.</p>
+
+        <footer>
+          <p>Autor: Equipe Editorial</p>
+        </footer>
+      </article>
+
+      <article aria-labelledby="a2">
+        <header>
+          <h2 id="a2">A diferença entre aside global e contextual</h2>
+        </header>
+        <p>
+          O <em>aside global</em> traz informações tangenciais ao site como um todo,
+          enquanto o contextual complementa apenas um artigo.
+        </p>
+        <footer>
+          <p>Autor: Equipe Editorial</p>
+        </footer>
+      </article>
+    </main>
+
+    <aside aria-labelledby="global">
+      <h2 id="global">Mais lidos</h2>
+      <ul>
+        <li><a href="#">Guia de headings</a></li>
+        <li><a href="#">Formulários acessíveis</a></li>
+        <li><a href="#">Semântica na prática</a></li>
+      </ul>
+    </aside>
+
+    <footer>
+      <p>&copy; 2026 Revista Editorial</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eventos — Section vs Article</title>
+  </head>
+  <body>
+    <header>
+      <h1>Agenda</h1>
+    </header>
+
+    <main>
+      <section aria-labelledby="titulo-eventos">
+        <h2 id="titulo-eventos">Eventos</h2>
+
+        <!--
+          Justificativa: cada evento é um conteúdo independente (título, data e descrição) e poderia existir sozinho,
+          por isso é <article>. Se fosse só um agrupamento sem autonomia, seria <section>.
+        -->
+        <article aria-labelledby="ev1">
+          <h3 id="ev1">Workshop de HTML Semântico</h3>
+          <p><time datetime="2026-03-10">10/03/2026</time> — Auditório 2</p>
+          <p>Prática de estruturação semântica e hierarquia de headings.</p>
+        </article>
+
+        <article aria-labelledby="ev2">
+          <h3 id="ev2">Palestra: Acessibilidade na Web</h3>
+          <p><time datetime="2026-03-18">18/03/2026</time> — Online</p>
+          <p>Boas práticas com foco em leitores de tela e formulários acessíveis.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Agenda</p>
+    </footer>
+  </body>
+</html>

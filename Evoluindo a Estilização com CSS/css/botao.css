@@ -1,0 +1,28 @@
+.botao {
+    background-color: rgba(0, 0, 90, 0.849);
+    color: orangered;
+    border: none;
+    padding: 2vh 3vw;
+    margin-top: 3vh;
+    font-size: 2.5vh;
+    cursor: pointer;
+    text-decoration: none;
+    border: 5px solid transparent;
+    border-radius: 15px;
+    transition: background-color 0.7s ease, color 0.7s ease;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    -webkit-transition: background-color 0.7s ease, color 0.7s ease;
+    -moz-transition: background-color 0.7s ease, color 0.7s ease;
+    -ms-transition: background-color 0.7s ease, color 0.7s ease;
+    -o-transition: background-color 0.7s ease, color 0.7s ease;
+}
+
+.botao:hover {
+    background-color: orangered;
+    color: rgba(0, 0, 90, 0.849);
+    border: 5px solid rgba(0, 0, 90, 0.849);
+    border-color: rgba(0, 0, 90, 0.849);
+}

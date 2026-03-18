@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog — Post com Comentários</title>
+  </head>
+  <body>
+    <header>
+      <h1>Blog do Desenvolvedor</h1>
+      <nav aria-label="Navegação do blog">
+        <ul>
+          <li><a href="#">Início</a></li>
+          <li><a href="#">Posts</a></li>
+          <li><a href="#">Categorias</a></li>
+          <li><a href="#">Sobre</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <article aria-labelledby="titulo-post">
+        <header>
+          <h2 id="titulo-post">Por que usar HTML semântico?</h2>
+          <p>
+            Por <strong>Rafael Roveri</strong> —
+            <time datetime="2026-02-14">14/02/2026</time>
+          </p>
+        </header>
+
+        <p>
+          HTML semântico melhora acessibilidade e manutenção do projeto. Além
+          disso, facilita o entendimento do conteúdo por ferramentas automáticas.
+        </p>
+
+        <footer>
+          <p>
+            Categoria: <a href="#">Front-end</a> —
+            Tags: <a href="#">HTML</a>, <a href="#">Acessibilidade</a>
+          </p>
+        </footer>
+      </article>
+
+      <section aria-labelledby="titulo-comentarios">
+        <h2 id="titulo-comentarios">Comentários</h2>
+
+        <article aria-labelledby="c1">
+          <header>
+            <h3 id="c1">Comentário de Ana</h3>
+            <p><time datetime="2026-02-14T10:10:00">14/02/2026 10:10</time></p>
+          </header>
+          <p>Explicação clara. Agora entendi melhor a diferença de section e article.</p>
+        </article>
+
+        <article aria-labelledby="c2">
+          <header>
+            <h3 id="c2">Comentário de Bruno</h3>
+            <p><time datetime="2026-02-14T11:03:00">14/02/2026 11:03</time></p>
+          </header>
+          <p>Gostei da parte de acessibilidade. Vou revisar meus headings nos projetos.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Blog do Desenvolvedor</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos</title>
+  <link rel="stylesheet" href="form.css">
+  <link rel="stylesheet" href="tabela.css">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <header>
+    <h1>Inscreva-se</h1>
+  </header>
+
+  <main>
+    <section id="cursos">
+      <h2>Cursos disponíveis</h2>
+      
+      <div class="tabela-cursos">
+        <table class="tabelas">
+          <thead>
+            <tr>
+              <th>Curso</th>
+              <th>Carga horária</th>
+              <th>Nível</th>
+              <th>Modalidade</th>
+              <th>Vagas disponíveis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Curso de Desenvolvimento Web</td>
+              <td>80 horas</td>
+              <td>Iniciante</td>
+              <td>Presencial</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>Curso de Back-end</td>
+              <td>60 horas</td>
+              <td>Intermediário</td>
+              <td>Online</td>
+              <td>15</td>
+            </tr>
+            <tr>
+              <td>Curso de Front-end</td>
+              <td>100 horas</td>
+              <td>Avançado</td>
+              <td>Presencial</td>
+              <td>5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="formulario">
+        <div class="formulario-matricula">
+          <h2>Formulário de Matrícula</h2>
+          <form id="matriculaForm">
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="curso">Curso:</label>
+            <select id="curso" name="curso" required>
+              <option value="">Selecione um curso</option>
+              <option value="programacao">Desenvolvimento Web</option>
+              <option value="design">Back-end</option>
+              <option value="marketing">Front-end</option>
+            </select>
+            <label>Modalidade:</label>
+            <div class="opcoes">
+                <input type="radio" id="presencial" name="modalidade" value="presencial" required>
+                <label for="presencial">Presencial</label>
+
+                <input type="radio" id="online" name="modalidade" value="online" required>
+                <label for="online">Online</label>
+            </div>
+
+            <label>Áreas de Interesse:</label>
+            <div class="opcoes">
+                <input type="checkbox" id="front-end" value="front-end">
+                <label for="front-end">Front-end</label>
+
+                <input type="checkbox" id="back-end" value="back-end">
+                <label for="back-end">Back-end</label>
+
+                <input type="checkbox" id="banco" value="banco">
+                <label for="banco">Banco de Dados</label>
+
+                <input type="checkbox" id="IA" value="IA">
+                <label for="IA">Inteligência Artificial</label>
+            </div>
+
+            <label for="comentarios">Comentários:</label>
+            <textarea id="comentarios" name="comentarios" rows="4"></textarea>
+
+            <button type="submit">Realizar inscrição</button>
+          </form>
+        </div>  
+    </section>
+  </main>
+</body>
+</html>

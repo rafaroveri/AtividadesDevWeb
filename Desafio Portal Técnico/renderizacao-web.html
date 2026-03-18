@@ -1,0 +1,287 @@
+<!--
+  Arquivo: renderizacao-web.html
+  Portal Técnico: Como os Browsers Renderizam Páginas Web
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portal Técnico — Como os Browsers Renderizam Páginas Web</title>
+
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.6; margin: 0; }
+    header, main, aside, footer { padding: 1.25rem; }
+    header { background: #0b1f33; color: #fff; }
+    header a { color: #fff; }
+    nav ul { list-style: none; padding: 0; margin: .75rem 0 0; display: flex; gap: .75rem; flex-wrap: wrap; }
+    nav a { text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,.6); }
+    main { max-width: 1100px; margin: 0 auto; }
+    section { padding: 1rem 0; }
+    h2 { margin-top: 1.25rem; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .grid { grid-template-columns: 2fr 1fr; align-items: start; } }
+    aside { background: #f7f7f7; border-top: 1px solid #e5e5e5; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    pre { background: #0f172a; color: #e2e8f0; padding: 1rem; overflow: auto; border-radius: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: .75rem; }
+    th, td { border: 1px solid #ddd; padding: .65rem; vertical-align: top; }
+    th { background: #f0f0f0; text-align: left; }
+    figure { margin: 1rem 0; }
+    figcaption { font-size: .95rem; color: #444; margin-top: .5rem; }
+    blockquote { border-left: 4px solid #0b1f33; margin: 1rem 0; padding: .25rem 1rem; background: #f8fafc; }
+    .topo { display: inline-block; margin-top: .75rem; }
+    footer { border-top: 1px solid #e5e5e5; background: #fafafa; }
+    .pill { display: inline-block; padding: .15rem .5rem; border-radius: 999px; background: #eef2ff; }
+  </style>
+</head>
+
+<body id="topo">
+  <header>
+    <h1>Como os Browsers Renderizam Páginas Web</h1>
+    <p>
+      Este mini <strong>portal técnico</strong> explica, passo a passo, o que acontece entre você digitar uma URL e
+      ver a página na tela: <em>DOM</em>, <em>CSSOM</em>, <mark>Render Tree</mark>, <strong>Layout</strong> e <strong>Paint</strong>.
+    </p>
+
+    <nav aria-label="Navegação interna">
+      <ul>
+        <li><a href="#dom">Construção do DOM</a></li>
+        <li><a href="#cssom">Construção do CSSOM</a></li>
+        <li><a href="#pipeline">Pipeline de Renderização</a></li>
+        <li><a href="#comparacao">Tabela: DOM vs CSSOM</a></li>
+        <li><a href="#imagem">Diagrama (picture/source)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="grid">
+      <div>
+        <section id="dom" aria-labelledby="titulo-dom">
+          <h2 id="titulo-dom">1) Construção do DOM</h2>
+          <p>
+            O <abbr title="Document Object Model">DOM</abbr> é uma árvore que representa o HTML como nós (elementos, textos, atributos).
+            O browser faz o <strong>parsing</strong> do HTML, tokeniza (quebra em tokens) e monta a árvore em memória.
+          </p>
+
+          <hr />
+
+          <h3>Exemplo rápido</h3>
+          <p>Um HTML simples vira uma estrutura em árvore (pai/filho):</p>
+
+          <p>
+            Trecho com <code>&lt;code&gt;</code>:
+            <code>&lt;button class="cta"&gt;Comprar&lt;/button&gt;</code>
+          </p>
+
+          <pre aria-label="Exemplo de HTML em bloco (pre)">
+&lt;main&gt;
+  &lt;h2&gt;Promoção&lt;/h2&gt;
+  &lt;button class="cta"&gt;Comprar&lt;/button&gt;
+&lt;/main&gt;</pre>
+
+          <p class="topo"><a href="#topo">↑ Voltar ao topo</a></p>
+        </section>
+
+        <section id="cssom" aria-labelledby="titulo-cssom">
+          <h2 id="titulo-cssom">2) Construção do CSSOM</h2>
+          <p>
+            O <abbr title="Cascading Style Sheets Object Model">CSSOM</abbr> é a árvore de estilos. O browser interpreta o CSS,
+            resolve a <strong>cascata</strong> (prioridade), herança e especificidade, e cria uma representação estruturada
+            do estilo aplicável.
+          </p>
+
+          <p>
+            Um detalhe importante: o CSSOM pode ser mais custoso do que parece porque o browser precisa “entender”
+            quais regras podem afetar quais elementos (inclusive por seletores complexos).
+          </p>
+
+          <p>
+            Dica de performance: prefira seletores mais diretos e evite excesso de re-estilizações. Isso reduz a chance de
+            <em>recalcular estilos</em> com frequência.
+          </p>
+
+          <p class="topo"><a href="#topo">↑ Voltar ao topo</a></p>
+        </section>
+
+        <section id="pipeline" aria-labelledby="titulo-pipeline">
+          <h2 id="titulo-pipeline">3) Pipeline de Renderização</h2>
+
+          <article aria-labelledby="titulo-article">
+            <h3 id="titulo-article">Da árvore ao pixel</h3>
+            <p>
+              Depois que o browser tem <span class="pill">DOM</span> e <span class="pill">CSSOM</span>, ele cria a
+              <strong>Render Tree</strong> (uma árvore só com o que realmente será renderizado) e então calcula posições/tamanhos (Layout)
+              e desenha (Paint).
+            </p>
+
+            <blockquote cite="https://developer.mozilla.org/">
+              “The DOM is a programming interface for HTML and XML documents.”
+            </blockquote>
+
+            <h4>Etapas (lista ordenada)</h4>
+            <ol>
+              <li><strong>Construção do DOM</strong> (parsing do HTML → árvore de nós)</li>
+              <li><strong>Construção do CSSOM</strong> (parsing do CSS → árvore de regras/estilos)</li>
+              <li><strong>Render Tree</strong> (combina DOM + CSSOM, removendo o que não aparece, como <code>display: none</code>)</li>
+              <li><strong>Layout</strong> (calcula geometria: largura/altura/posição de cada item)</li>
+              <li><strong>Paint</strong> (desenha pixels: texto, cores, bordas, sombras, imagens)</li>
+            </ol>
+
+            <hr />
+
+            <p>
+              Em engines modernas, pode existir uma fase extra chamada <em>compositing</em> (composição de camadas), mas aqui focamos no essencial.
+              Se você ouvir “<strong>reflow</strong>” ou “<strong>relayout</strong>”, normalmente estão falando de repetir o <mark>Layout</mark>.
+            </p>
+
+            <pre aria-label="Pseudo-código do pipeline (pre)">
+parseHTML()  -> DOM
+parseCSS()   -> CSSOM
+combine()    -> RenderTree
+layout()     -> geometry (x, y, width, height)
+paint()      -> pixels</pre>
+          </article>
+
+          <p class="topo"><a href="#topo">↑ Voltar ao topo</a></p>
+        </section>
+
+        <section id="comparacao" aria-labelledby="titulo-comparacao">
+          <h2 id="titulo-comparacao">4) DOM vs CSSOM (tabela comparativa)</h2>
+          <p>
+            Os dois são “árvores”, mas com objetivos diferentes: o <strong>DOM</strong> representa conteúdo/estrutura e o
+            <strong>CSSOM</strong> representa estilo/regras.
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Aspecto</th>
+                <th>DOM</th>
+                <th>CSSOM</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Origem</td>
+                <td>HTML</td>
+                <td>CSS</td>
+              </tr>
+              <tr>
+                <td>O que representa</td>
+                <td>Estrutura do documento (nós e hierarquia)</td>
+                <td>Regras de estilo (cascata, herança, especificidade)</td>
+              </tr>
+              <tr>
+                <td>Uso principal</td>
+                <td>Manipulação de conteúdo via JavaScript</td>
+                <td>Cálculo de estilos finais aplicados aos elementos</td>
+              </tr>
+              <tr>
+                <td>Impacto comum em performance</td>
+                <td>Alterações no DOM podem disparar novo Layout/Paint</td>
+                <td>Mudanças de estilo podem disparar recálculo + Layout/Paint</td>
+              </tr>
+              <tr>
+                <td>Combinação</td>
+                <td colspan="2">DOM + CSSOM → <strong>Render Tree</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="topo"><a href="#topo">↑ Voltar ao topo</a></p>
+        </section>
+
+        <section id="imagem" aria-labelledby="titulo-imagem">
+          <h2 id="titulo-imagem">5) Diagrama com &lt;picture&gt; + &lt;source&gt;</h2>
+          <p>
+            A tag <code>&lt;picture&gt;</code> permite servir imagens diferentes dependendo da largura da tela.
+            Isso é útil para entregar uma imagem maior no desktop e uma menor no mobile.
+          </p>
+
+          <figure>
+            <picture>
+              <source
+                media="(min-width: 800px)"
+                srcset="https://dummyimage.com/960x320/0b1f33/ffffff.png&amp;text=DOM+%2B+CSSOM+%E2%86%92+Render+Tree+%E2%86%92+Layout+%E2%86%92+Paint+(Desktop)"
+              />
+              <img
+                src="https://dummyimage.com/640x240/111827/ffffff.png&amp;text=Pipeline+de+Renderiza%C3%A7%C3%A3o+(Mobile)"
+                alt="Diagrama do pipeline de renderização: DOM e CSSOM formando a Render Tree, depois Layout e Paint."
+                width="640"
+                height="240"
+                loading="lazy"
+              />
+            </picture>
+            <figcaption>
+              Figura: visão geral do caminho crítico de renderização. Em telas maiores, usamos uma imagem mais larga via <code>&lt;source&gt;</code>.
+            </figcaption>
+          </figure>
+
+          <p class="topo"><a href="#topo">↑ Voltar ao topo</a></p>
+        </section>
+      </div>
+
+      <aside aria-label="Recursos externos">
+        <h2>Leituras recomendadas</h2>
+        <p>
+          Se você quiser se aprofundar, estes links são um bom próximo passo (abrem em nova aba):
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction"
+              target="_blank"
+              rel="noopener noreferrer"
+            >MDN — Introdução ao DOM</a>
+          </li>
+          <li>
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/Performance/Critical_rendering_path"
+              target="_blank"
+              rel="noopener noreferrer"
+            >MDN — Critical Rendering Path</a>
+          </li>
+          <li>
+            <a
+              href="https://web.dev/articles/critical-rendering-path"
+              target="_blank"
+              rel="noopener noreferrer"
+            >web.dev — Critical Rendering Path</a>
+          </li>
+          <li>
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work"
+              target="_blank"
+              rel="noopener noreferrer"
+            >MDN — Como os browsers funcionam</a>
+          </li>
+        </ul>
+
+        <hr />
+
+        <p>
+          <strong>Glossário rápido:</strong><br />
+          <abbr title="Árvore final do que será desenhado">Render Tree</abbr> = estrutura desenhável<br />
+          <abbr title="Cálculo de tamanhos e posições">Layout</abbr> = geometria<br />
+          <abbr title="Desenho de pixels na tela">Paint</abbr> = pintura
+        </p>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <p><strong>Autor:</strong> Rafael Roveri</p>
+    <p>
+      <strong>Data:</strong>
+      <time datetime="2026-03-05">05 de março de 2026</time>
+    </p>
+    <p>
+      <strong>Contato:</strong>
+      <a href="mailto:contato@exemplo.com">contato@exemplo.com</a>
+    </p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,45 @@
+h2{
+    text-align: center;
+    margin-bottom: 20px;
+    color: orangered;
+}
+
+.tabela-cursos {
+  display: flex;
+  justify-content: center;
+}
+
+.tabelas {
+  width: 60%;
+  border-collapse: collapse;
+  background: linear-gradient(to bottom, #111, #1c1c1c);
+  color: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.tabelas th,
+.tabelas td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #2f2f2f;
+}
+
+.tabelas th {
+  background: linear-gradient(to right, #cc3700, orangered);
+  color: white;
+  font-weight: bold;
+}
+
+.tabelas tbody tr:nth-child(odd) {
+  background-color: #161616;
+}
+
+.tabelas tbody tr:nth-child(even) {
+  background-color: #222;
+}
+
+.tabelas tbody tr:hover {
+  background-color: rgba(255, 69, 0, 0.15);
+}
