@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista de Tarefas</title>
+        <link rel="stylesheet" href="Estilo/estilo.css">
+    </head>
+    <body>
+        <h1 id="titulo">Minha Lista de Tarefas</h1>
+
+        <input type="text" id="inputTarefa" placeholder="Digite uma tarefa">
+        <div id="botoes">
+            <button onclick="adicionarTarefa()" id="botaoAdicionar" class="botao">Adicionar</button>
+            <button onclick="limparTarefas()" id="botaoLimpar" class="botao">Limpar Lista</button>
+        </div>
+        <p id="contador"></p>
+        <ul id="listaTarefas"></ul>
+
+        <script src="Script/script.js"></script>
+    </body>
+</html>
